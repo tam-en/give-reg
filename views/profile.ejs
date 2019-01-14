@@ -1,0 +1,27 @@
+<br><h4>Hello, <%= user.firstname %>!</h4>
+
+<div class="row">
+		<img src="<%= user.image %>"><br>
+</div>
+	<div class="row">
+		<ul>
+		<li><p><span class="bold">full name:  </span><%= user.firstname %> <%= user.lastname %></p></li>
+		<li><p><span class="bold">display name:  </span><%= user.username %></p></li>
+		<li><p><span class="bold">status:  </span><%= user.admin ? 'Admin' : 'User'%> </p></li>
+		<li><p><span class="bold">email:  </span><%= user.email %> </p></li>
+		<li><p><span class="bold">birth date:  </span><%= user.dob %> </p></li>	
+		<li><p><span class="bold">bio:  </span><%= user.bio %> </p></li>
+		</ul>		
+	</div>
+	<div class="col s9">	
+</div>
+
+<form method="POST" action="/profile/<%=user.id%>/?_method=DELETE">
+	<div class="row">
+		<div class="col s12 input-field">
+			<input hidden type="text" name="id" value="<%=user.id%>">
+			<button class="waves-effect waves-light btn" type="submit" name="action">delete account<i class="material-icons right">subtract</i>
+			</button>
+		</div>
+	</div>
+</form>

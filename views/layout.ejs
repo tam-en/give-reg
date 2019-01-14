@@ -1,0 +1,52 @@
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Give Registry</title>
+		<link rel="stylesheet" type="text/css" href="/style.css">
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,600,600i,700,700i" rel="stylesheet">
+		<!-- Compiled and minified CSS -->
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	</head>
+	<body>
+		<nav>
+			<%if (!user) {%>
+
+				<a href="/">Home</a>
+				<a href="/auth/login">Login</a>
+				<a href="/auth/signup">Signup</a>
+
+			<%} else {%>
+			<% if(user.admin) { %>
+				<a href="/profile/admins">Admin Page</a>
+
+			<%}%>
+				<a href="/">Home</a>
+				<a href="/events/eventsearch">Browse/Search Events</a>
+				<a href="/profile">User Dashboard</a>
+				<a href="/auth/logout">Logout</a>
+
+			<%}%>
+		</nav>
+		<div class="container">
+			<% include partials/alerts %>
+			<%- body %>
+		</div>
+
+		<!-- Compiled and minified JavaScript -->
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	    <script>
+	    	document.addEventListener('DOMContentLoaded', function() {
+		      var elems = document.querySelectorAll('.datepicker');
+		      var instances = M.Datepicker.init(elems, {
+		        autoClose: false,
+		        minDate: new Date('01/01/1900'),
+		        maxDate: new Date(),
+		        yearRange: [1920, 2019]
+		      });
+			});
+	    </script>
+
+	</body>
+	</html>

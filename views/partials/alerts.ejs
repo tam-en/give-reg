@@ -1,0 +1,21 @@
+<% if(alerts.error) {%>
+<% console.log('error alerts:', alerts.error)%>
+  <% alerts.error.forEach(function(msg){ %>
+  <br><br>
+    <div class="chip">
+	    <img src="https://api.iconify.design/zmdi:alert-polygon.svg">
+	    <%= msg %>
+	</div>
+  <% }); %>
+<% } %>
+
+<% if(alerts.success) {%>
+<% console.log('success alerts:', alerts.success)%>
+  <br><br>
+   <% alerts.success.forEach(function(msg) {%>
+	    <div class="chip">
+		    <img src="https://api.iconify.design/zmdi-check-circle.svg">
+		    <%= msg %>
+		</div>
+	<% });%>
+  <% }; %>

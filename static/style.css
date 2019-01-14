@@ -1,0 +1,44 @@
+body {
+	font-family: 'Lato', sans-serif;
+	margin: 0;
+}
+
+nav {
+	text-align: center;
+	background-color: #28A59A !important;
+	min-height: 35px;
+	padding: 0 0 0 0;
+}
+
+nav a {
+	text-transform: uppercase;
+	font-size: 13px;
+	font-weight: 700;
+	color: darkblue;
+	text-decoration: none;
+	padding: 0 15px 0 15px;
+}
+
+nav a:hover {
+	color: gray !important;
+}
+
+nav a:active {
+	color: black;
+}
+
+form {
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 25px;
+}
+
+button {
+	background-color: darkblue;
+}
+
+.bold {
+	font-weight: 700;
+	text-transform: uppercase;
+}
+

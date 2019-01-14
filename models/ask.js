@@ -1,0 +1,15 @@
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+  const ask = sequelize.define('ask', {
+    name: DataTypes.STRING,
+    desc: DataTypes.TEXT,
+    charityID: DataTypes.INTEGER,
+    eventId: DataTypes.INTEGER
+  }, {});
+  ask.associate = function(models) {
+    models.ask.hasMany(models.give);
+    models.ask.belongsTo(models.charity);
+    models.ask.belongsTo(models.event);
+  };
+  return ask;
+};
