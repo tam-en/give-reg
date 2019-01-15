@@ -8,10 +8,9 @@ var passport = require('../config/passportConfig')
 // });
 
 router.get('/eventsearch', function(req, res) {
-	//res.render('events/eventsearch');
-	res.send("Why won't this work?");
+	res.render('events/eventsearch');
+	//res.send("Why won't this work?");
 	//res.render('events/eventsearch', { previousData: null });
-
 });
 
 // router.post('/login', passport.authenticate('local', {

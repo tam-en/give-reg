@@ -21,5 +21,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   charity.associate = function(models) {
     models.charity.hasMany(models.ask);
+  };
   return charity;
 };

@@ -11,12 +11,13 @@ var session = require('express-session');
 
 // Declare express app
 var app = express();
+
 // Declare a reference to models folder
 var db = require('./models'); 
 var urlToCall;
 
 
-// set views to EJS
+// Set views to EJS
 app.set('view engine', 'ejs');
 
 // MIDDLEWARE!! (takes place between font end/forms and routes)
@@ -41,14 +42,15 @@ app.use(function(req, res, next){ // "next" = the callback function called next?
 	next();
 });
 
-// barebones item3: Declare routes
+// Declare routes
 app.get('/', function(req, res){
 	res.render('home');
 });
 
-// include controllers
+// Include controllers
 app.use('/auth', require('./controllers/auth')); // auth = whatever path you want your routes in the controllers file
-app.use('/profile', require('./controllers/profile'))
+app.use('/profile', require('./controllers/profile'));
+app.use('/events', require('./controllers/events'));
 
-// barebones item4: Listen on port
+// Listen on port
 app.listen(3000);
