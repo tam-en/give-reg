@@ -1,1 +1,14 @@
 <br><h4>event setup page</h4>
+
+<div class="row">
+	<form action="/events/event" method="POST">
+		<div class="row">
+			<div class="col s6 input-field">
+				<label>event name</label>
+				<input type="text" name="name" placeholder="your event name" value="<%= previousData ? previousData.name : '' %>">
+				<button class="waves-effect waves-light btn" type="submit" name="action">publish your event<i class="material-icons right">add</i>
+				</button>
+			</div>
+		</div> 
+	</form>
+</div>

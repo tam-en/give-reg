@@ -51,6 +51,7 @@ app.get('/', function(req, res){
 app.use('/auth', require('./controllers/auth')); // auth = whatever path you want your routes in the controllers file
 app.use('/profile', require('./controllers/profile'));
 app.use('/events', require('./controllers/events'));
+app.use('/charities', require('./controllers/charities'));
 
 // Listen on port
 app.listen(3000);
