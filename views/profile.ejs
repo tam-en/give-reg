@@ -16,7 +16,7 @@
 	<div class="row">
 		<div class="col s6 input-field">
 			<label>start an event</label>
-			<input type="text" name="name" placeholder="your event name here" value="<%= previousData ? previousData.name : '' %>">
+			<input type="text" name="name" placeholder="your event name here" value="%= previousData.name ? previousData.name : '' %">
 			<button class="waves-effect waves-light btn" type="submit" name="action">start an event!<i class="material-icons right">add</i>
 			</button>
 		</div>

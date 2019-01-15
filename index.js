@@ -1,8 +1,7 @@
 require('dotenv').config();
 
-// barebones item1: Requires express
-var flash = require('connect-flash');
 var express = require('express');
+var flash = require('connect-flash');
 var layouts = require('express-ejs-layouts');
 var methodOverride = require('method-override');
 var parser = require('body-parser');
@@ -14,7 +13,6 @@ var app = express();
 
 // Declare a reference to models folder
 var db = require('./models'); 
-var urlToCall;
 
 
 // Set views to EJS
@@ -46,6 +44,8 @@ app.use(function(req, res, next){ // "next" = the callback function called next?
 app.get('/', function(req, res){
 	res.render('home');
 });
+
+
 
 // Include controllers
 app.use('/auth', require('./controllers/auth')); // auth = whatever path you want your routes in the controllers file

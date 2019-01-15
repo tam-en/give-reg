@@ -1,1 +1,28 @@
-<h4>Search the Charity Navigator database</h4>
+<br><h4>Search the Charity Navigator database</h4>
+
+<p>I will take some magic white, and a little bit of Vandyke brown and a little touch of yellow. I spend a lot of time walking around in the woods and talking to trees, and squirrels, and little rabbits and stuff. That's what painting is all about. It should make you feel good when you paint. The very fact that you're aware of suffering is enough reason to be overjoyed that you're alive and can experience it. Go out on a limb - that's where the fruit is.</p>
+
+<div class="row">
+	<form action="/charities/:name" method="POST">
+		<div class="row">
+			<div class="col s6 input-field">
+				<label>search by charity name</label>
+				<input type="text" name="charityName" placeholder="charity name">
+									
+			</div>
+			<div class="col s2 input-field">
+				<button class="waves-effect waves-light btn" type="submit" name="action">search</button>
+			</div>
+		</div>
+	</form action="/charities/:category" method="POST">
+		<div class="row">
+			<div class="col s6 input-field">
+				<label>search by charity category</label>
+				<input type="text" name="category.categoryName" placeholder="charity category">
+			</div>
+			<div class="col s2 input-field">
+				<button class="waves-effect waves-light btn" type="submit" name="action">search</button>
+			</div>
+		</div>		
+	</form>
+</div>
