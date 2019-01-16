@@ -67,22 +67,22 @@ ___
 
 ###Views
 
-| file name          | **path**                                  | contents                                                     |
-| ------------------ | ----------------------------------------- | ------------------------------------------------------------ |
-| home.ejs           | '/'                                       | - landing page with overview of site purpose and links to login and signup.<br />- appropriate attribution to Charity Navigator |
-| login.ejs          | '/auth/login'                             | login form page                                              |
-| signup.ejs         | '/auth/signup'                            | form to setup a new account                                  |
-| profile.ejs        | '/profile/:id'<br />(user.id)             | - user info (update option) <br />- list of events already organized w/ details, links to their pages, button to edit <br />- list of any pledges user has made to events <br /> |
-| eventsetup.ejs     | '/events/<br />eventsetup'                | - form for setting up or updating an event<br />- form to include message to potential givers<br />- options for specifying a charity beneficiary:<br />    - link to page to view <br />- option to delete event |
-| event.ejs          | '/events/<br />event/:id'<br />(event.id) | - (public-facing landing page for event) <br />- info on event and organizer info on ask(s) <br />- form for pledging donations for an event (requires being signed in) |
-| eventsearch.ejs    | '/events/<br />eventsearch'               | display all events in the events table                       |
-| charities.ejs      | '/charities/<br />charities.ejs'          | display all charities in the local charity table . . . fixed height div with checkbox next to each, button on top to add selected charities to a fundraising event.<br /><br />button is pressed:<br /><br />if no charities selected, flash msg "please select one or more charities to add them to a fundraising event"<br /><br />if charities are selected . . . <br />if (!user) flash msg "please login or sign up to select charities" and redirect to login page (retain selection data to then redirect to event setup page?<br />if ((user) && (!event)) redirect to eventsetup page, populating charity field<br />if (user) && (event)) redirect to eventsetup page in progress, populating charity field |
-| charity-search.ejs | 'charities/charity-search.ejs'            | - form for searching the charity navigator database. when search executed, display results fixed height div / scroll and checkbox next to each charity, button on top to add selecterd charity(ies) to a fundraising event . . .  similar logic to above? |
-|                    |                                           |                                                              |
-|                    |                                           |                                                              |
-|                    |                                           |                                                              |
-|                    |                                           |                                                              |
-| layout.ejs         |                                           | nav: - if not logged in: search events, login, signup, about<br />- if logged in: search events, my dashboard, add event, about, logout<br /> |
+| file name           | **path**                                  | contents                                                     |
+| ------------------- | ----------------------------------------- | ------------------------------------------------------------ |
+| home.ejs            | '/'                                       | - landing page with overview of site purpose and links to login and signup.<br />- appropriate attribution to Charity Navigator |
+| login.ejs           | '/auth/login'                             | login form page                                              |
+| signup.ejs          | '/auth/signup'                            | form to setup a new account                                  |
+| profile.ejs         | '/profile/:id'<br />(user.id)             | - user info (update option) <br />- list of events already organized w/ details, links to their pages, button to edit <br />- list of any pledges user has made to events <br /> |
+| eventsetup.ejs      | '/events/<br />eventsetup'                | - form for setting up or updating an event<br />- form to include message to potential givers<br />- options for specifying a charity beneficiary:<br />    - link to page to view <br />- option to delete event |
+| event.ejs           | '/events/<br />event/:id'<br />(event.id) | - (public-facing landing page for event) <br />- info on event and organizer info on ask(s) <br />- form for pledging donations for an event (requires being signed in) |
+| eventsearch.ejs     | '/events/<br />eventsearch'               | display all events in the events table                       |
+| charities.ejs       | '/charities/<br />charities.ejs'          | display all charities in the local charity table . . . fixed height div with checkbox next to each, button on top to add selected charities to a fundraising event.<br /><br />button is pressed:<br /><br />if no charities selected, flash msg "please select one or more charities to add them to a fundraising event"<br /><br />if charities are selected . . . <br />if (!user) flash msg "please login or sign up to select charities" and redirect to login page (retain selection data to then redirect to event setup page?<br />if ((user) && (!event)) redirect to eventsetup page, populating charity field<br />if (user) && (event)) redirect to eventsetup page in progress, populating charity field |
+| charity-search.ejs  | 'charities/charity-search.ejs'            | form for searching the charity navigator database            |
+| charity-results.ejs | 'charities/charity-results.ejs'           | display search results in fixed-height div / scroll and checkbox next to each charity, button on top to add selected charity(ies) to a fundraising event . . .  similar logic to above? |
+|                     |                                           |                                                              |
+|                     |                                           |                                                              |
+|                     |                                           |                                                              |
+| layout.ejs          |                                           | nav: - if not logged in: search events, login, signup, about<br />- if logged in: search events, my dashboard, add event, about, logout<br /> |
 
 ---
 # Charity Navigator 

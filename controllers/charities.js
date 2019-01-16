@@ -6,22 +6,32 @@ var urlToCall;
 
 
 // routes
-router.get('charity-search', function(req, res){
+router.get('/charity-search', function(req, res){
 	res.render('charities/charity-search');
 });
-//app.post('/charity-search', function(req, res){
+
+router.get('/charity-results', function(req, res){
+	res.render('charities/charity-results');
+});
+
+router.post('/charity-results', function(req, res){
+	console.log('got to router.post for /charity-results')
+	res.redirect('/charities/charity-results');
+});
 
 router.post('/charity-search', function(req, res){
+	console.log('router.post(/charity-search) got called');
 	console.log(req.body);
 	console.log("req.body.userquery=", req.body.userquery);
 	var userquery = encodeURI(req.body.userquery).toLowerCase();
 	console.log("userquery = ", userquery);
 	urlToCall = process.env.CHARITY_NAVIGATOR_URL+"&search="+userquery;
 	//res.send(urlToCall);
-	res.render('charities/charity-search');		
+	res.render('charities/charity-search');	
 });
 
-router.get('/:name', function(req, res){
+router.get('/', function(req, res){
+	console.log('router.get(/name) got called');
   if(req.params && req.params.name){
     request(urlToCall, function(error, response, body){
       if(error || response.statusCode != 200){
