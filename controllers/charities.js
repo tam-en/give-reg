@@ -27,7 +27,8 @@ router.post('/charity-results', function(req, res){
 	console.log("req.body.charityName=", req.body.charityName);
 	var inputName = encodeURI(req.body.charityName).toLowerCase();
 	console.log("inputName = ", inputName);
-	urlToCall = process.env.CHARITY_NAVIGATOR_URL+"&search="+inputName;
+	//urlToCall = process.env.CHARITY_NAVIGATOR_URL+"&search="+inputName;
+	urlToCall = process.env.CHARITY_NAVIGATOR_URL+"&search="+inputName+"&searchType=NAME_ONLY&sort=RELEVANCE";
 	//res.send(urlToCall);
 	if(req.body.charityName){
     request(urlToCall, function(error, response, body){

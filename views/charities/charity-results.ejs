@@ -1,21 +1,26 @@
 <br><h4>Charities that meet your search criteria</h4>
 
-<% foundCharities.forEach(function(c) {%>
+<% foundCharities.forEach(function(c) {%><br><br>
 	<div>
-		<p><strong>checkbox here</strong></p>
-		<h5><%=c.charityName %></h5>
-		<p><%=c.ein %></p>
-		<p><%=c.city %>, <%=c.state %></p>
-		<p>IRS subsection: <%=c.irsClassification.subsection %></p>
-		<p>learn more at Charity Navigator: <a href="<%=c.charityNavigatorURL %>"><%=c.charityName %></a></p>
-		<form action="/charities/ein" method="POST">
-			<div class="row">
-				<div class="col s6 input-field">
-					<input type="hidden" name="ein" value="<%= c.ein %>">					
-				<button class="waves-effect waves-light btn" type="submit" name="action">see more information about this organization</button>
-			</div>
-		</div>
-	</form>
+		<h6><%=c.charityName %></h6>
+		<p>tax ID (EIN)#: <%=c.ein %>  </p>
+		<p>IRS subsection/deductibility: <%=c.irsClassification.subsection %> <%= c.irsClassification.deductibility %></p>
+		<p>mailing address:  <%=c.mailingAddress.city %>, <%=c.mailingAddress.stateOrProvince %>  </p>
+		<% var advisory = c.advisories.severity %>
+		<%if(advisory){%>
+			<p class="bold">Charity Navigator advisory status: <%=c.advisories.severity %></p>
+		<%}%>
+
+		<%if(!advisory){%>
+			<form action="/charities/ein" method="POST">
+				<div class="row">
+					<div class="col s6 input-field">
+						<input type="hidden" name="ein" value="<%= c.ein %>">					
+						<button class="waves-effect waves-light btn" type="submit" name="action">see more information about this organization</button>
+					</div>
+				</div>
+			</form>
+		<%}%>
 		<hr>
 	</div>
 <% }) %>

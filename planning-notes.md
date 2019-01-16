@@ -16,52 +16,67 @@ ___
 
 (foreign keys in ***bold/italic***)
 
-| user table attributes                   | & data type                      | event table attributes                    | & data type                      |
-| --------------------------------------- | -------------------------------- | :---------------------------------------- | -------------------------------- |
-| id                                      | integer/serial/<br />primary key | id                                        | integer/serial/<br />primary key |
-| firstname                               | string                           | name                                      | string                           |
-| lastname                                | string                           | desc                                      | text                             |
-| email                                   | string                           | date                                      | date                             |
-| password                                | string                           | url                                       | string                           |
-| bio                                     | text                             | ***userId***                              | integer                          |
-|                                         |                                  |                                           |                                  |
-| models.user.<br />hasMany(models.event) |                                  | models.event.<br />hasMany(models.ask)    |                                  |
-| models.user.<br />hasMany(models.give)  |                                  | models.event.<br />belongsTo(models.user) |                                  |
+| user table attributes                       | & data type                      | event table attributes                        | & data type                      |
+| ------------------------------------------- | -------------------------------- | :-------------------------------------------- | -------------------------------- |
+| id                                          | integer/serial/<br />primary key | id                                            | integer/serial/<br />primary key |
+| firstname                                   | string                           | name                                          | string                           |
+| lastname                                    | string                           | desc                                          | text                             |
+| email                                       | string                           | date                                          | date                             |
+| password                                    | string                           | url                                           | string                           |
+| bio                                         | text                             | ***userId***                                  | integer                          |
+|                                             |                                  |                                               |                                  |
+| **models.user.<br />hasMany(models.event)** |                                  | **models.event.<br />hasMany(models.ask)**    |                                  |
+| **models.user.<br />hasMany(models.give)**  |                                  | **models.event.<br />belongsTo(models.user)** |                                  |
 
 
 
 ####more tables . . .
 
-| ask table attributes                       | & data types                     | give table attributes                    | & data types                     |
-| ------------------------------------------ | -------------------------------- | ---------------------------------------- | -------------------------------- |
-| id                                         | integer/serial/<br />primary key | id                                       | integer/serial/<br />primary key |
-| name                                       | string                           | amount                                   | decimal                          |
-| desc                                       | text                             | message                                  | text                             |
-| ***charityId***                            | integer                          | ***askId***                              | integer                          |
-| ***eventId***                              | integer                          | ***userId***                             | integer                          |
-|                                            |                                  |                                          |                                  |
-| models.ask.<br />hasMany(models.give)      |                                  | models.give.<br />belongsTo(models.ask); |                                  |
-| models.ask.<br />belongsTo(models.charity) |                                  | models.give.<br />belongsTo(models.user) |                                  |
+| ask table attributes                           | & data types                     | give table attributes                        | & data types                     |
+| ---------------------------------------------- | -------------------------------- | -------------------------------------------- | -------------------------------- |
+| id                                             | integer/serial/<br />primary key | id                                           | integer/serial/<br />primary key |
+| name                                           | string                           | amount                                       | decimal                          |
+| desc                                           | text                             | message                                      | text                             |
+| ***charityId***                                | integer                          | ***askId***                                  | integer                          |
+| ***eventId***                                  | integer                          | ***userId***                                 | integer                          |
+|                                                |                                  |                                              |                                  |
+| **models.ask.<br />hasMany(models.give)**      |                                  | **models.give.<br />belongsTo(models.ask);** |                                  |
+| **models.ask.<br />belongsTo(models.charity)** |                                  | **models.give.<br />belongsTo(models.user)** |                                  |
 
 
 
 ####and one more table . . .
 
-| charity table attributes         | data type                        | more attributes                                | data types |
-| -------------------------------- | -------------------------------- | ---------------------------------------------- | ---------- |
-| id                               | integer/serial/<br />primary key | irsSubsection (irsClassification.subsection)   | string     |
-| ein                              | string                           | streetAddress1 (mailingAddress.streetAddress1) | string     |
-| charityName                      | string                           | streetAddress2 (mailingAddress.streetAddress2) | string     |
-| category (category.categoryName) | string                           | city (mailingAddress.city)                     | string     |
-| cause (cause.causeName)          | string                           | state (mailingAddress.state)                   | string     |
-| tagline                          | string                           | postalCode (mailingAddress.postalCode)         | string     |
-| mission                          | text                             | country (mailingAddress.country)               | string     |
-| websiteURL                       | text                             | currentRating (currentRating.rating)           | string     |
-| charityNavigatorURL              | text                             | stars (currentRating.ratingImage.large)        | string     |
-|                                  |                                  |                                                |            |
-|                                  |                                  | models.charity.hasMany(models.ask)             |            |
-
-
+| **charity table attribute** | **data type**              | **maps to api attribute**              |
+| --------------------------- | -------------------------- | -------------------------------------- |
+| id                          | integer/serial/primary key |                                        |
+| ein                         | string                     | ein                                    |
+| charityName                 | string                     | charityName                            |
+| category                    | string                     | category.categoryName                  |
+| cause                       | string                     | cause.causeName                        |
+| tagline                     | string                     | tagLine                                |
+| mission                     | text                       | mission                                |
+| websiteURL                  | text                       | websiteURL                             |
+| charityNavigatorURL         | text                       | charityNavigatorURL                    |
+| irsSubsection               | string                     | irsClassification.subsection           |
+| streetAddress1              | string                     | streetAddress1                         |
+| streetAddress2              | string                     | streetAddress2                         |
+| city                        | string                     | city                                   |
+| state                       | string                     | stateOrProvince                        |
+| postalCode                  | string                     | postalCode                             |
+| country                     | string                     | country                                |
+| currentRating               | string                     | currentRating.score                    |
+| stars                       | string                     | currentRating.ratingImage.large        |
+|                             |                            |                                        |
+| deductibility               | string                     | irsClassification.deductibility        |
+| dStreetAddress1             | string                     | donationAddress.streetAddress1         |
+| dStreetAddress2             | string                     | donationAddress.streetAddress2         |
+| dCity                       | string                     | donationAddress.city                   |
+| dState                      | string                     | donationAddress.stateOrProvince        |
+| dPostalCode                 | string                     | donationAddress.postalCode             |
+| dCounty                     | string                     | donationAddress.country                |
+|                             |                            |                                        |
+|                             |                            | **models.charity.hasMany(models.ask)** |
 
 ___
 
@@ -108,7 +123,7 @@ All requests sent to the Data API require two query parameters for authenticatio
 
 American Cancer Society, EIN 131788491
 
-
+American Red Cross, EIN 530196605
 
 
 
