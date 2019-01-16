@@ -104,6 +104,14 @@ All requests sent to the Data API require two query parameters for authenticatio
 
 
 
+# Organizations to use for seeding
+
+American Cancer Society, EIN 131788491
+
+
+
+
+
 #Stretch goal notes
 
 - make the amount of a pledge visible/invisible per user choice

@@ -1,0 +1,35 @@
+<!-- to do: input form needs to record data to local charities table, create an ask for the chartity that's linked to the event. and then take user back to the event page? -->
+
+<br><h4>Info on a specific org identified via EIN</h4>
+
+
+<p><strong>checkbox here</strong></p>
+<h5><%=foundCharity.charityName %></h5>
+<p><%= foundCharity.mission %></p>
+<p><%=foundCharity.tagLine %></p>
+<p><%=foundCharity.mission %></p>
+<p><%=foundCharity.websiteURL %></p>
+<br>
+<p>category: <%=foundCharity.category.categoryName %></p>
+<p>cause: <%=foundCharity.cause.causeName %></p>
+<br>
+<p><strong>Donation address:</strong></p>
+<p><%=foundCharity.donationAddress.streetAddress1 %></p>
+<p><%=foundCharity.donationAddress.streetAddress2 %></p>
+<p><%=foundCharity.donationAddress.city %>, <%=foundCharity.donationAddress.state %>  <%=foundCharity.donationAddress.postalCode %></p>
+<br>
+<p><strong>IRS subsection: </strong><%=foundCharity.irsClassification.subsection %></p>
+<br>
+<p><strong>Current Rating:</strong></p>  
+<p><%=foundCharity.currentRating.score %> (out of a possible 100)</p>
+<%=foundCharity.currentRating.ratingImage.large %>
+<p>learn more at Charity Navigator: <a href="<%=foundCharity.charityNavigatorURL %>"><%=foundCharity.charityName %></a></p>
+<form action="/eventsetup" method="POST">
+	<div class="row">
+		<div class="col s6 input-field">
+			<input type="hidden" name="ein" value="<%= foundCharity.ein %>">					
+			<button class="waves-effect waves-light btn" type="submit" name="action">pick this one</button>
+		</div>
+	</div>
+</form>
+
