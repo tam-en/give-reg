@@ -14,8 +14,8 @@ module.exports = {
       desc: {
         type: Sequelize.TEXT
       },
-      charityID: {
-        type: Sequelize.INTEGER
+      charityEIN: {
+        type: Sequelize.STRING
       },
       eventId: {
         type: Sequelize.INTEGER

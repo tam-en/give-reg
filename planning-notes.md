@@ -37,7 +37,7 @@ ___
 | id                                             | integer/serial/<br />primary key | id                                           | integer/serial/<br />primary key |
 | name                                           | string                           | amount                                       | decimal                          |
 | desc                                           | text                             | message                                      | text                             |
-| ***charityId***                                | integer                          | ***askId***                                  | integer                          |
+| ***charityEIN***                               | string                           | ***askId***                                  | integer                          |
 | ***eventId***                                  | integer                          | ***userId***                                 | integer                          |
 |                                                |                                  |                                              |                                  |
 | **models.ask.<br />hasMany(models.give)**      |                                  | **models.give.<br />belongsTo(models.ask);** |                                  |

@@ -17,7 +17,14 @@ module.exports = (sequelize, DataTypes) => {
     postalCode: DataTypes.STRING,
     country: DataTypes.STRING,
     rating: DataTypes.STRING,
-    starsLarge: DataTypes.STRING
+    starsLarge: DataTypes.STRING,
+    deductibility: DataTypes.STRING,
+    dStreetAddress1: DataTypes.STRING,
+    dStreetAddress2: DataTypes.STRING,
+    dCity: DataTypes.STRING,
+    dState: DataTypes.STRING,
+    dPostalCode: DataTypes.STRING,
+    dCountry: DataTypes.STRING
   }, {});
   charity.associate = function(models) {
     models.charity.hasMany(models.ask);

@@ -1,32 +1,65 @@
 <!-- to do: input form needs to record data to local charities table, create an ask for the chartity that's linked to the event. and then take user back to the event page? -->
-<h5><%=foundCharity.charityName %></h5>
-
-<p><strong>Current Rating:  </strong><img src="<%=foundCharity.currentRating.ratingImage.large %>"></p>
-<p><%=foundCharity.currentRating.score %> (out of a possible 100)</p>
-<p>category: <%=foundCharity.category.categoryName %>   |  cause: <%=foundCharity.cause.causeName %> </p>
-
-
-<p><%=foundCharity.tagLine %></p>
-<p><%=foundCharity.mission %></p>
-<p><%=foundCharity.websiteURL %></p>
 <br>
-<p><strong>Donation address:</strong></p>
-<p><%=foundCharity.donationAddress.streetAddress1 %></p>
-<p><%=foundCharity.donationAddress.streetAddress2 %></p>
-<p><%=foundCharity.donationAddress.city %>, <%=foundCharity.donationAddress.state %>  <%=foundCharity.donationAddress.postalCode %></p>
-<br>
-<p><strong>tax ID (EIN)#: </strong><%=foundCharity.ein %></p>
-<p><strong>IRS subsection: </strong><%=foundCharity.irsClassification.subsection %></p>
-<p><strong>deductibility: </strong><%=foundCharity.irsClassification.deductibility %></p>
-
-<br>
-<p>learn more at Charity Navigator: <a href="<%=foundCharity.charityNavigatorURL %>"><%=foundCharity.charityName %></a></p>
-<form action="/eventsetup" method="POST">
-	<div class="row">
-		<div class="col s6 input-field">
-			<input type="hidden" name="ein" value="<%= foundCharity.ein %>">					
-			<button class="waves-effect waves-light btn" type="submit" name="action">pick this one</button>
-		</div>
+<div class="row">
+	<div class="col s6">
+		<h5><%=foundCharity.charityName %></h5>
+		<p><%=foundCharity.tagLine %></p>
+		<a href="<%=foundCharity.websiteURL %>"><%=foundCharity.websiteURL %></a>
 	</div>
-</form>
+	<div class="col s6">
+		<form action="/events/askdisplay" method="POST">
+			<div class="row">
+				<div class="col s6 input-field">
+					<input type="hidden" name="foundCharity" value="<%=JSON.stringify(foundCharity)%>">					
+					<button class="waves-effect waves-light btn" type="submit">add to my ask</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+		<%if(foundCharity.currentRating){%>
+			<p><strong>Current Rating:  </strong><img src="<%=foundCharity.currentRating.ratingImage.large %>"></p>   
+			<p>Score:  <%=foundCharity.currentRating.score %> (out of a possible 100)</p>
+		<%}%>
+
+		<%if(foundCharity.category){%>
+			<p>category: <%=foundCharity.category.categoryName %></p>
+		<%}%>
+
+		<%if(foundCharity.cause){%>
+			<p>cause: <%=foundCharity.cause.causeName %> </p>
+		<%}%>
+
+		<p>mission statement: <%=foundCharity.mission %></p>
+
+	
+	<%if(foundCharity.mailingAddress){%>
+			<p><strong>Mailing address:</strong></p>
+			<p><%=foundCharity.mailingAddress.streetAddress1 %></p>
+			<p><%=foundCharity.mailingAddress.streetAddress2 %></p>
+			<p><%=foundCharity.mailingAddress.city %>, <%=foundCharity.mailingAddress.stateOrProvince %>  <%=foundCharity.mailingAddress.postalCode %></p>
+			<br>
+	<%}%>
+	
+	<%if(foundCharity.donationAddress){%>
+			<p><strong>Donation address:</strong></p>
+			<p><%=foundCharity.donationAddress.streetAddress1 %></p>
+			<p><%=foundCharity.donationAddress.streetAddress2 %></p>
+			<p><%=foundCharity.donationAddress.city %>, <%=foundCharity.donationAddress.stateOrProvince %>  <%=foundCharity.donationAddress.postalCode %></p>
+			<br>
+		
+	<%}%>
+
+	<%if(foundCharity.irsClassification){%>
+			<p><strong>tax ID (EIN)#: </strong><%=foundCharity.ein %></p>
+			<p><strong>IRS subsection: </strong><%=foundCharity.irsClassification.subsection %></p>
+			<p><strong>deductibility: </strong><%=foundCharity.irsClassification.deductibility %></p>
+			<br>
+	<%}%>
+
+
+		<p>learn more at Charity Navigator: <a href="<%=foundCharity.charityNavigatorURL %>"><%=foundCharity.charityName %></a></p>
+
+
+
 

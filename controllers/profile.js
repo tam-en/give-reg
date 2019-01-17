@@ -12,7 +12,17 @@ var db = require('../models');
 
 
 router.get('/', loggedIn, function(req, res){
-	res.render('profile');
+	console.log("got to profile.js router.get for /");
+	console.log("and");
+	db.event.find({
+		where: { userId: req.body.id }
+	}).then(function(foundEvents){
+		res.render('profile', {event: foundEvents});
+		console.log(foundEvents);
+	}).catch(function(err){
+		console.log('error', err);
+		res.send('check yer logs');
+	})
 });
 
 router.get('/admins', isAdmin, function(req, res){

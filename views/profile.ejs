@@ -10,23 +10,45 @@
 	<div class="col s9">	
 </div>
 
+<h5>events you have already set up</h5>
 
 
-<form method="POST" action="/events/eventsetup" >
+
+
+<h5>start a new event</h5>
+
+<form method="POST" action="/events/eventsetup">
 	<div class="row">
 		<div class="col s6 input-field">
-			<label>start an event</label>
-			<input type="text" name="name" placeholder="your event name here" value="%= previousData.name ? previousData.name : '' %">
-			<button class="waves-effect waves-light btn" type="submit" name="action">start an event!<i class="material-icons right">add</i>
-			</button>
+			<label>event name</label>
+			<input type="text" name="name" placeholder="your event name">
 		</div>
+		<div class="col s3 input-field">
+			<label>date of event (optional)</label>
+			<input type="date" name="date" placeholder="date of event">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col s9 input-field">
+			<label>event decription</label>
+			<input type="text" name="desc" placeholder="describe your event">
+		</div>
+	</div>
+	<input type="hidden" name="userId" value=req.body.id>
+	<div class="col s6">
+		<input type="hidden" name="id" value="<%=user.id%>">
+		<button class="waves-effect waves-light btn" type="submit" name="action">start an event!<i class="material-icons right">add</i>
+		</button>
 	</div>
 </form>
 
+<h5>and if you want to quit this whole system:</h5>
+
+
 <form method="POST" action="/profile/<%=user.id%>/?_method=DELETE">
 	<div class="row">
-		<div class="col s12 input-field">
-			<input hidden type="text" name="id" value="<%=user.id%>">
+		<div class="col s6">
+			<input type="hidden" name="id" value="<%=user.id%>">
 			<button class="waves-effect waves-light btn" type="submit" name="action">delete account<i class="material-icons right">subtract</i>
 			</button>
 		</div>

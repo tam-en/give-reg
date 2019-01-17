@@ -16,6 +16,11 @@ router.post('/charity-search', function(req, res){
 	res.render('charities/charity-search');	
 });
 
+// Charities page (list of charities in local table) routes
+router.get('/charities', function(req, res){
+	res.render('charities/charities');
+});
+
 // Charity-results routes
 router.get('/charity-results', function(req, res){
 	res.render('charities/charity-results');
@@ -54,7 +59,7 @@ router.get('/ein', function(req, res){
 
 router.post('/ein', function(req, res){
 	console.log('got to router.post for /ein')
-	console.log(req.body);
+	//console.log(req.body);
 	console.log("req.body.ein=", req.body.ein);
 	var inputName = encodeURI(req.body.ein);
 	console.log("inputName = ", inputName);
@@ -70,6 +75,7 @@ router.post('/ein', function(req, res){
         var foundCharity = JSON.parse(body);
         //res.send(urlToCall);
         res.render('charities/ein', {foundCharity});
+        //res.send(foundCharity);
       }
     });
   }
@@ -77,24 +83,6 @@ router.post('/ein', function(req, res){
     res.render('error');
   }
 });
-
-// router.get('/', function(req, res){
-// 	console.log('router.get(/name) got called');
-//   if(req.params && req.params.name){
-//     request(urlToCall, function(error, response, body){
-//       if(error || response.statusCode != 200){
-//         res.render('/partials/error');
-//       }
-//       else {
-//         var charitydata = JSON.parse(body);
-//         res.render('show', { charitydata: charitydata });
-//       }
-//     });
-//   }
-//   else {
-//     res.render('/partials/error');
-//   }
-// });
 
 
 

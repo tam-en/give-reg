@@ -66,6 +66,27 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
+      },
+      deductibility: {
+        type: Sequelize.STRING
+      },
+      dStreetAddress1: {
+        type: Sequelize.STRING
+      },
+      dStreetAddress2: {
+        type: Sequelize.STRING
+      },
+      dCity: {
+        type: Sequelize.STRING
+      },
+      dState: {
+        type: Sequelize.STRING
+      },
+      dPostalCode: {
+        type: Sequelize.STRING
+      },
+      dCountry: {
+        type: Sequelize.STRING
       }
     });
   },

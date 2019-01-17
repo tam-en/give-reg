@@ -1,10 +1,10 @@
 <br><h4>event setup</h4>
 <div>
-	<form method="POST" action="/events/eventsetup">
+	<form method="POST" action="/events/asksetup">
 		<div class="row">
 			<div class="col s6 input-field">
 				<label>event name</label>
-				<input type="text" name="name" placeholder="your event name" value="<%= previousData ? previousData.name : '' %>">
+				<input type="text" name="name" placeholder="your event name">
 			</div>
 			<div class="col s3 input-field">
 				<label>date of event (optional)</label>
@@ -18,23 +18,14 @@
 			</div>
 		</div>
 
-		<button class="waves-effect waves-light btn" type="submit" name="action">publish your event<i class="material-icons right">add</i>
+		<input type="hidden" name="userId" value=req.body.id>
+
+		<button class="waves-effect waves-light btn" type="submit" name="action">start your event!<i class="material-icons right">add</i>
 		</button>
 	</form>
 	
 </div>
 
-<br><h4>add a charity as a beneficiary of your event</h4>
-
-<div class="row">
-	<form method="GET" action="/charities/charity-search" >
-		<label>add a charitable "ask" to your event</label>
-		<input type="hidden" name="event" value="tktktktk">
-		<button class="waves-effect waves-light btn" type="submit" name="action">go to charity selection page</button>
-
-
-	</form>
-</div>
 
 
 
