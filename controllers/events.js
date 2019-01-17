@@ -11,7 +11,6 @@ router.get('/eventsetup', function(req, res){
 });
 
 router.post('/eventsetup', function(req, res){
-	console.log("req.body at router.post/eventsetup=", req.body);
 	db.event.create({
 		userId: req.body.id,
 		name: req.body.name,

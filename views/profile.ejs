@@ -12,9 +12,16 @@
 
 <h5>events you have already set up</h5>
 
+<% foundEvents.forEach(function(event){ %>
+	<div class="uglybox">
+		<p><%= event.dataValues.name %> (<%= event.dataValues.desc %>) </p>
+		<% if(event.dataValues.date){ %>
+			<p> <%= event.dataValues.date %> </p>
+		<% } %> 
+	</div>
+<% }) %>
 
-
-
+<br>
 <h5>start a new event</h5>
 
 <form method="POST" action="/events/eventsetup">

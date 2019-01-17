@@ -12,13 +12,14 @@ var db = require('../models');
 
 
 router.get('/', loggedIn, function(req, res){
-	console.log("got to profile.js router.get for /");
-	console.log("and");
-	db.event.find({
-		where: { userId: req.body.id }
+	console.log("YAYYYYY!!!!! got to profile.js router.get for /");
+	// var loggedUser = JSON.stringify(req.user);
+	// console.log(loggedUser);
+	db.event.findAll({
+		where: { userId: req.user.dataValues.id }
 	}).then(function(foundEvents){
-		res.render('profile', {event: foundEvents});
-		console.log(foundEvents);
+		console.log("OMG!!!!!", foundEvents);
+		res.render('profile', { foundEvents });
 	}).catch(function(err){
 		console.log('error', err);
 		res.send('check yer logs');
