@@ -127,6 +127,12 @@ American Red Cross, EIN 530196605
 
 
 
+# Bugs to tackle
+
+- New event not posting if date is missing
+
+
+
 #Stretch goal notes
 
 - make the amount of a pledge visible/invisible per user choice

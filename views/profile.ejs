@@ -13,11 +13,22 @@
 <h5>events you have already set up</h5>
 
 <% foundEvents.forEach(function(event){ %>
-	<div class="uglybox">
-		<p><%= event.dataValues.name %> (<%= event.dataValues.desc %>) </p>
-		<% if(event.dataValues.date){ %>
-			<p> <%= event.dataValues.date %> </p>
-		<% } %> 
+	<div class="row">
+		<div class="col s6">
+			<p><%= event.dataValues.name %> </p>
+			<p>(<%= event.dataValues.desc %>) </p>
+			<p>event.dataValues.id = <%= event.dataValues.id %>, <%= typeof event.dataValues.id%> </p>
+
+
+			<% if(event.dataValues.date){ %>
+				<p> <%= event.dataValues.date %> </p>
+			<% } %> 
+		</div>
+		<div class="col s6">
+			<form method="GET" action="/events/event/<%=event.dataValues.id%>">
+				<button type="submit" class="waves-effect waves-light btn">go to event page</button>
+			</form>
+		</div>
 	</div>
 <% }) %>
 

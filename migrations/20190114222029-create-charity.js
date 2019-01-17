@@ -21,7 +21,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       tagLine: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       mission: {
         type: Sequelize.TEXT
@@ -57,7 +57,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       starsLarge: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
