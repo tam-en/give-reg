@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     desc: DataTypes.TEXT,
     charityEIN: DataTypes.STRING,
-    eventId: DataTypes.INTEGER
+    eventId: DataTypes.INTEGER,
+    userEventId: DataTypes.INTEGER
   }, {});
   ask.associate = function(models) {
     models.ask.hasMany(models.give);
