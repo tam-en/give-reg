@@ -52,4 +52,6 @@ app.use('/charities', require('./controllers/charities'));
 app.use('/gives', require('./controllers/gives'));
 
 // Listen on port
-app.listen(3000);
+app.listen(process.env.PORT || 3000, function(){
+	console.log('hello world!');
+});
