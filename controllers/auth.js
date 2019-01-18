@@ -63,8 +63,6 @@ router.post('/signup', function(req, res, next) {
 					}
 				})
 			} 
-			//console.log('there was an error???3', err)
-			//req = deletePassword(req, res);
 			res.render('auth/signup', { previousData: req.body, alerts: req.flash() });
 		});
 	}
@@ -75,6 +73,5 @@ router.get('/logout', function(req, res){
 	req.flash('success', 'Logout successful. Thanks for stopping by!');
 	res.redirect('/');
 });
-
 
 module.exports = router;

@@ -1,26 +1,30 @@
-<h4><%= event.name %></h4>
-
-<p><%= event.desc %></p>
-<p><%= event.date %></p>
-
-<br><h5>create an "ask" for your event</h5>
-<p>If there's two big trees invariably sooner or later there's gonna be a little tree. I thought today we would do a happy little picture. Let's do it again then, what the heck. By now you should be quite happy about what's happening here.</p>
+<br><h4>Edit event settings</h4>
 
 
 <div class="row">
-	<div class="col s6">
-		<form method="GET" action="/charities/charity-search" >
-			<button class="waves-effect waves-light btn" type="submit" name="action">go to charity search page</button>
-		</form>
-	</div>
-	<div class="col s6">
-		<form method="GET" action="/charities/charities" >
-			<button class="waves-effect waves-light btn" type="submit" name="action">see popular charities</button>
-		</form>
-	</div>
+	<form method="POST" action="/events/event/<%=event.dataValues.id%>/?_method=PUT">
+		<div class="row">
+			<div class="col s3 input-field">
+				<label></label>
+				<input type="date" name="event.date" value="<%=event.dataValues.date %>">
+			</div>
+			<div class="col s9 input-field">
+				<label>event name</label>
+				<input type="text" name="event.name" value="<%= event.dataValues.name %>">
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="col s12 input-field">
+				<label>description</label>
+				<input type="text" name="event.desc" value="<%= event.dataValues.desc %>">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s3 input-field">
+				<button class="waves-effect waves-light btn" type="submit" name="action">submit<i class="material-icons right">add</i>
+				</button>
+			</div>
+		</div>
+	</form>
 </div>
-
-
-<h5>picked charity</h5>
-
-

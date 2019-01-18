@@ -7,24 +7,18 @@
 		<!-- Compiled and minified CSS -->
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 	</head>
 	<body>
 		<nav>
 			<%if (!user) {%>
-
 				<a href="/">Home</a>
 				<a href="/auth/login">Login</a>
 				<a href="/auth/signup">Signup</a>
-
 			<%} else {%>
-			<% if(user.admin) { %>
-				<a href="/profile/admins">Admin Page</a>
-
-			<%}%>
 				<a href="/">Home</a>
-				<a href="/events/eventsearch">Browse/Search Events</a>
 				<a href="/profile">User Dashboard</a>
+				<a href="/profile-edit">Edit Profile</a>
+				<a href="/events/event-list">Browse/Search Events</a>
 				<a href="/auth/logout">Logout</a>
 
 			<%}%>

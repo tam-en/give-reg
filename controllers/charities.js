@@ -84,6 +84,57 @@ router.post('/ein', function(req, res){
   }
 });
 
+// Charity-detail routes
+router.get('/charity-detail', function(req, res){
+  console.log("req.body at router.get/askdisplay=", req.body);
+  res.render('events/askdisplay')
+});
+
+router.post('/charity-detail', function(req, res){
+  console.log("req.body at router.post/askdisplay=", req.body);
+  var foundCharity =JSON.parse(Object.values(req.body));
+  db.charity.findOrCreate({
+    where: {
+      ein: foundCharity.ein,
+      },
+      defaults: {
+        ein: foundCharity.ein,
+        charityName: foundCharity.charityName,
+        category: foundCharity.category.categoryName,
+        cause: foundCharity.cause.causeName,
+        tagLine: foundCharity.tagLine,
+        mission: foundCharity.mission,
+        websiteURL: foundCharity.websiteURL,
+        charityNavigatorURL: foundCharity.charityNavigatorURL,
+        irsSubsection: foundCharity.irsClassification.subsection,
+        streetAddress1: foundCharity.mailingAddress.streetAddress1,
+        streetAddress2: foundCharity.mailingAddress.streetAddress2,
+        city: foundCharity.mailingAddress.city,
+        state: foundCharity.mailingAddress.stateOrProvince,
+        postalCode: foundCharity.mailingAddress.postalCode,
+        country: foundCharity.mailingAddress.country,
+        rating: foundCharity.currentRating.score,
+        starsLarge: foundCharity.currentRating.ratingImage.large,
+        deductibility: foundCharity.irsClassification.deductibility,
+        dStreetAddress1: foundCharity.donationAddress.streetAddress1,
+        dStreetAddress2: foundCharity.donationAddress.streetAddress2,
+        dCity: foundCharity.donationAddress.city,
+        dState: foundCharity.donationAddress.stateOrProvince,
+        dPostalCode: foundCharity.donationAddress.postalCode,
+        dCountry: foundCharity.donationAddress.country
+      }
+    })
+    .spread(function(ask, wasCreated){
+      res.redirect('/events/eventsetup');
+    })
+    .catch(function(err){
+      console.log('error', err);
+      res.render('error');
+    });
+  res.render('charities/charity-detail', { foundCharity });
+  //res.send(foundCharity);
+});
+
 
 
 module.exports = router;

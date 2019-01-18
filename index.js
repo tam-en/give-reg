@@ -14,11 +14,10 @@ var app = express();
 // Declare a reference to models folder
 var db = require('./models'); 
 
-
 // Set views to EJS
 app.set('view engine', 'ejs');
 
-// MIDDLEWARE!! (takes place between font end/forms and routes)
+// MIDDLEWARE
 app.use(layouts);
 app.use('/', express.static('static'));
 app.use(parser.urlencoded({extended: false}));
@@ -45,13 +44,12 @@ app.get('/', function(req, res){
 	res.render('home');
 });
 
-
-
 // Include controllers
 app.use('/auth', require('./controllers/auth')); // auth = whatever path you want your routes in the controllers file
 app.use('/profile', require('./controllers/profile'));
 app.use('/events', require('./controllers/events'));
 app.use('/charities', require('./controllers/charities'));
+app.use('/gives', require('./controllers/gives'));
 
 // Listen on port
 app.listen(3000);
