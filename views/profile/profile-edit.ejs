@@ -1,0 +1,50 @@
+<br><h4><%= user.firstname %> <%= user.lastname %></h4>
+
+	<div class="row">
+		<ul>
+		<li><p><span class="bold">full name:  </span><%= user.firstname %> <%= user.lastname %></p></li>
+		<li><p><span class="bold">email:  </span><%= user.email %> </p></li>
+		<li><p><span class="bold">bio:  </span><%= user.bio %> </p></li>
+		</ul>		
+	</div>
+	<div class="col s9">	
+</div>
+
+<div class="row">
+	<form method="POST" action="/profile/profile-edit/<%=user.id%>/?_method=PUT">
+		<div class="row">
+			<div class="col s6 input-field">
+				<label>first name</label>
+				<input type="text" name="firstname" value="<%=user.firstname %>" placeholder="<%= user.firstname %>">
+			</div>
+			<div class="col s6 input-field">
+				<label>last name</label>
+				<input type="text" name="lastname" value="<%=user.lastname %>"placeholder="<%= user.lastname %>">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 input-field">
+				<label>bio</label>
+				<input type="text" name="bio" value="<%= user.bio %>" placeholder="<%= user.bio %>">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s3 input-field">
+				<button class="waves-effect waves-light btn" type="submit" name="action">submit<i class="material-icons right">add</i>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<h5>Delete profile:</h5>
+
+<form method="POST" action="/profile/<%=user.id%>/?_method=DELETE">
+	<div class="row">
+		<div class="col s6">
+			<input type="hidden" name="id" value="<%=user.id%>">
+			<button class="waves-effect waves-light btn" type="submit" name="action">delete account<i class="material-icons right">subtract</i>
+			</button>
+		</div>
+	</div>
+</form>

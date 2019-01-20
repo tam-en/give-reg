@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var methodOverride = require('method-override');
+var db = require('../models');
+var methodOverride = require('method-override');
+var passport = require('../config/passportConfig');
 
 // reference to middleware
 var loggedIn = require('../middleware/loggedIn');
@@ -22,23 +25,46 @@ router.get('/', loggedIn, function(req, res){
 });
 
 router.get('/profile-edit', function(req, res){
-	res.render('/profile-edit')
+	res.render('/profile/profile-edit');
 });
+
+router.get('/profile-edit/:id', function(req, res){
+	db.user.findByPk(
+		req.params.id
+	).then(function(user){
+		res.render('profile/profile-edit', { user: user});
+	});
+});
+
+router.put('/profile-edit/:id', function(req, res){
+	db.user.update({
+	  firstname: req.body.firstname,
+	  lastname: req.body.lastname,
+	  bio: req.body.bio
+	}, {
+		where: {
+		id: req.params.id
+		}
+	}).then(function() {
+	  res.redirect('/profile');
+})
+});
+
 
 // router.get('/admins', isAdmin, function(req, res){
 // 	res.render('admins');
 // });
 
-router.delete('/:id', function(req, res){
-	db.user.destroy({
-		where: { id: req.params.id }
-	}).then(function(user) {
-		req.flash('success', 'Account deleted! Sign up again?');
-		res.redirect('/auth/signup');
-	}).catch(function(error) {
-		console.log("error!", error);
-		res.send('check your logs');
-	});
-});
+// router.delete('/:id', function(req, res){
+// 	db.user.destroy({
+// 		where: { id: req.params.id }
+// 	}).then(function(user) {
+// 		req.flash('success', 'Account deleted! Sign up again?');
+// 		res.redirect('/auth/signup');
+// 	}).catch(function(error) {
+// 		console.log("error!", error);
+// 		res.send('check your logs');
+// 	});
+// });
 
 module.exports = router;

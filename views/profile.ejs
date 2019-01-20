@@ -11,11 +11,11 @@
 	<div class="col s9">	
 </div>
 
-<form method="GET" action="/profile-edit">
+<form method="GET" action="/profile/profile-edit/<%=user.id%>">
 	<div class="row">
 		<div class="col s6">
-			
-			<button class="waves-effect waves-light btn" type="submit" name="action">edit profile</button>
+			<input type="hidden" name="id" value="<%=user.id %>">
+			<button class="waves-effect waves-light btn" type="submit">edit profile</button>
 		</div>
 	</div>
 </form>
@@ -46,7 +46,7 @@
 <br>
 <h5>start a new event</h5>
 
-<form method="POST" action="/events/eventsetup">
+<form method="POST" action="/events/event-setup">
 	<div class="row">
 		<div class="col s6 input-field">
 			<label>event name</label>

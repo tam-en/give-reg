@@ -44,12 +44,14 @@ app.get('/', function(req, res){
 	res.render('home');
 });
 
+
 // Include controllers
 app.use('/auth', require('./controllers/auth')); // auth = whatever path you want your routes in the controllers file
 app.use('/profile', require('./controllers/profile'));
 app.use('/events', require('./controllers/events'));
 app.use('/charities', require('./controllers/charities'));
 app.use('/gives', require('./controllers/gives'));
+app.use('/profile', require('./controllers/profile'));
 
 // Listen on port
 app.listen(process.env.PORT || 3000, function(){

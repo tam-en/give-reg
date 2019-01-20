@@ -51,6 +51,7 @@ router.put('/event/:id', function(req, res){
 	console.log('made it to router.put route');
 	console.log(req.body);
 	console.log(req.params.id);
+
   	db.event.update({
 		name: req.body.name,
 		desc: req.body.desc,
