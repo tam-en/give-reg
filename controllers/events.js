@@ -11,14 +11,34 @@ router.get('/event-setup', function(req, res){
 	res.render('events/event-setup');
 });
 
-router.post('/event-setup', function(req, res){
+router.post('/event/:id', function(req, res){
 	db.event.create({
 		userId: req.body.id,
 		name: req.body.name,
 		date: req.body.date,
 		desc: req.body.desc
 	});
-	res.render('events/event-setup');
+	res.redirect('/profile');
+});
+
+router.get('/events/ask', function(req, res){
+
+	console.log("what's the point of this?")
+	res.render('/events/ask');
+})
+
+router.post('/events/ask', function(req, res){
+	console.log("JEEEEBERS!!!!!!",req.body);
+	db.ask.create({
+		eventId:req.body.eventID,
+		name: req.body.name,
+		desc: req.body.desc
+	}).then(function(ask) {
+		res.redirect('/event/:id');
+	}).catch(function(error) {
+		console.log('error!', error);
+		res.send('check yer logs')
+	})
 });
 
 // Event-admin setup routes
@@ -27,12 +47,12 @@ router.get('/event-admin', function(req, res){
 	res.render('events/event-admin')
 });
 
-router.post('/event-admin', function(req, res){
-	//var charity =JSON.parse(Object.values(req.body));
-	console.log("req.body at router.post/asksetup=", req.body);
-	console.log("here we go at event-admin=", req.body);
-	res.render('events/event-admin');
-});
+// router.post('/event-admin', function(req, res){
+// 	//var charity =JSON.parse(Object.values(req.body));
+// 	console.log("req.body at router.post/asksetup=", req.body);
+// 	console.log("here we go at event-admin=", req.body);
+// 	res.render('events/event-admin');
+// });
 
 // routes for event page
 router.get('/event', function(req, res){
