@@ -36,7 +36,8 @@
 
 	
 	<%if(foundCharity.mailingAddress){%>
-			<p class="bold">Mailing address: <%=foundCharity.mailingAddress.streetAddress1 %></p>
+			<p class="bold">Mailing address:</p>
+			<p><%=foundCharity.mailingAddress.streetAddress1 %></p>
 			<p><%=foundCharity.mailingAddress.streetAddress2 %></p>
 			<p><%=foundCharity.mailingAddress.city %>, <%=foundCharity.mailingAddress.stateOrProvince %>  <%=foundCharity.mailingAddress.postalCode %></p>
 			<br>

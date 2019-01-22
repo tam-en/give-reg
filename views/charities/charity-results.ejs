@@ -1,6 +1,6 @@
 <br><h4>Charities that meet your search criteria</h4>
 
-<p>Note: Charities (or alleged charities) without a "more info" button are organizations that are listed with an advisory status on Charity Navigator. You can read more about those advisory statuses <a href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=5593#advisories" target="_blank">here</a>. For more information on Charity Navigator ratings, click <a href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=5593#rating" target="_blank">here</a>. 
+<p><span class="bold">Note:</span> Charities (or alleged charities) without a "more info" button are organizations that are listed with an advisory status on Charity Navigator. You can read more about those advisory statuses <a href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=5593#advisories" target="_blank">here</a>. For more information on Charity Navigator ratings, click <a href="https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=5593#rating" target="_blank">here</a>. 
 
 
 
@@ -8,9 +8,9 @@
 	<div class="row">
 		<div class="col s8">
 			<h5><%=c.charityName %></h5>
-			<p><span class="bold">tax ID (EIN)#:</span> <%=c.ein %>  </p>
-			<p><span class="bold">IRS subsection/deductibility:</span> <%=c.irsClassification.subsection %>  |  <%= c.irsClassification.deductibility %></p>
-			<p><span class="bold">mailing address:</span> <%=c.mailingAddress.city %>, <%=c.mailingAddress.stateOrProvince %></p>
+			<p><span class="semibold">tax ID (EIN)#:</span> <%=c.ein %>  </p>
+			<p><span class="semibold">IRS subsection/deductibility:</span> <%=c.irsClassification.subsection %>  |  <%= c.irsClassification.deductibility %></p>
+			<p><span class="semibold">mailing address:</span> <%=c.mailingAddress.city %>, <%=c.mailingAddress.stateOrProvince %></p>
 			<% var advisory = c.advisories.severity %>
 			<%if(advisory){%>
 				<p class="bold">Charity Navigator advisory status: <%=c.advisories.severity %></p>
