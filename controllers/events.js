@@ -62,6 +62,18 @@ router.get('/event/:id', function(req, res){
 	});
 });
 
+
+// router.get('/event/:id', function(req, res){
+// 	db.ask.findAll({
+// 		where: {
+// 			eventId: req.params.id;
+// 		}
+// 	}
+// 	).then(function(event) {
+// 		res.render('events/event', { event: event } );
+// 	});
+// });
+
 router.put('/event/:id', function(req, res){
 	console.log('made it to router.put route');
 	console.log(req.body);

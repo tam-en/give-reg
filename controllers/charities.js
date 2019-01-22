@@ -131,7 +131,7 @@ router.post('/charity-detail', function(req, res){
       console.log('error', err);
       res.render('error');
     });
-  res.render('charities/charity-detail', { foundCharity });
+  res.render('charities/ein', { foundCharity });
   //res.send(foundCharity);
 });
 

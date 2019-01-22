@@ -24,6 +24,11 @@
 		</div>
 	</form>
 
+
+
+
+
+
 <div class="row">
 	<br><h5>Add a quick "ask" to your event</h5>
 	<p>An "ask" is anything you would like people to contribute, whether that's an invitation to coffee or help with household tasks. To ask for charitable donations, see "Add charitable ask" below.</p>
@@ -31,7 +36,7 @@
 <div class="row">
 	<form method="POST" action="/events/ask">
 		<div class="row">
-			<div class="col s6 input-field">
+			<div class="col s9 input-field">
 				<label>name of "ask"</label>
 				<input type="text" name="name" placeholder="'ask' name">
 			</div>
@@ -53,21 +58,20 @@
 </div>
 
 <div class="row">
-	<br><h5>Add charitable ask</h5>
-	<p>Click "charity database" to search through the Charity Navigator site of organizations in the U.S. Or  click "popular charities" to see what organizations other Give Registry users have picked for their events.</p>
-</div>
-
-<div class="row">
-	<div class="col s6">
+	<div class="col s9">
+		<br><h5>Add charitable ask</h5>
+		<p>Click "charity database" to search through the Charity Navigator site of organizations in the U.S. <!-- Or click "popular charities" to see what organizations other Give Registry users have picked for their events. --></p>
+	</div>
+	<div class="col s3"><br><br><br>
 		<form method="GET" action="/charities/charity-search" >
 			<button class="waves-effect waves-light btn" type="submit" name="action">charity database</button>
 		</form>
 	</div>
-	<div class="col s6">
+<!-- 	<div class="col s6">
 		<form method="GET" action="/charities/charities" >
 			<button class="waves-effect waves-light btn" type="submit" name="action">popular charities</button>
 		</form>
-	</div>
+	</div> -->
 </div>
 
 
