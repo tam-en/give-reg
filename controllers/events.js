@@ -4,13 +4,6 @@ var db = require('../models');
 var methodOverride = require('method-override');
 var passport = require('../config/passportConfig');
 
-
-// Event setup routes
-router.get('/event-setup', function(req, res){
-	console.log("req.body at router.get/eventsetup=", req.body);
-	res.render('events/event-setup');
-});
-
 router.post('/event/:id', function(req, res){
 	db.event.create({
 		userId: req.body.id,
@@ -21,20 +14,22 @@ router.post('/event/:id', function(req, res){
 	res.redirect('/profile');
 });
 
-router.get('/events/ask', function(req, res){
-
-	console.log("what's the point of this?")
+router.get('/ask', function(req, res){
+	console.log("NOOOOOOOOOO what's the point of this?")
 	res.render('/events/ask');
 })
 
-router.post('/events/ask', function(req, res){
+router.post('/ask/:id', function(req, res){
 	console.log("JEEEEBERS!!!!!!",req.body);
 	db.ask.create({
-		eventId:req.body.eventID,
+		eventId: req.body.eventID,
 		name: req.body.name,
 		desc: req.body.desc
-	}).then(function(ask) {
-		res.redirect('/event/:id');
+	}).then(function() {
+		//var id = parseInt(req.body.eventID);
+		//res.redirect('/events/event/:id');
+		//res.send(req.body);
+		res.render('/events/ask');
 	}).catch(function(error) {
 		console.log('error!', error);
 		res.send('check yer logs')
@@ -42,10 +37,10 @@ router.post('/events/ask', function(req, res){
 });
 
 // Event-admin setup routes
-router.get('/event-admin', function(req, res){
-	console.log("req.body at router.get/asksetup=", req.body);
-	res.render('events/event-admin')
-});
+// router.get('/event-admin', function(req, res){
+// 	console.log("req.body at router.get/asksetup=", req.body);
+// 	res.render('events/event-admin')
+// });
 
 // router.post('/event-admin', function(req, res){
 // 	//var charity =JSON.parse(Object.values(req.body));

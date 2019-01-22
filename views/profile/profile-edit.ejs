@@ -1,14 +1,4 @@
-<br><h4><%= user.firstname %> <%= user.lastname %></h4>
-
-	<div class="row">
-		<ul>
-		<li><p><span class="bold">full name:  </span><%= user.firstname %> <%= user.lastname %></p></li>
-		<li><p><span class="bold">email:  </span><%= user.email %> </p></li>
-		<li><p><span class="bold">bio:  </span><%= user.bio %> </p></li>
-		</ul>		
-	</div>
-	<div class="col s9">	
-</div>
+<br><h4><%= user.firstname %> <%= user.lastname %>: Edit profile</h4>
 
 <div class="row">
 	<form method="POST" action="/profile/profile-edit/<%=user.id%>/?_method=PUT">
@@ -36,15 +26,19 @@
 		</div>
 	</form>
 </div>
+<br><br><hr>
+<div class="row">
+	<div class="col s4">
+		<h5>Delete profile</h5>
+		<p>Warning: action cannot be undone</p>
+	</div>
+	<div class="col s4">
+		<br><br>
 
-<h5>Delete profile:</h5>
-
-<form method="POST" action="/profile/<%=user.id%>/?_method=DELETE">
-	<div class="row">
-		<div class="col s6">
+		<form method="POST" action="/profile/<%=user.id%>/?_method=DELETE">
 			<input type="hidden" name="id" value="<%=user.id%>">
 			<button class="waves-effect waves-light btn" type="submit" name="action">delete account<i class="material-icons right">subtract</i>
 			</button>
-		</div>
+		</form>
 	</div>
-</form>
+</div>

@@ -5,7 +5,7 @@ body {
 
 nav {
 	text-align: center;
-	background-color: #28A59A !important;
+	background-color: #4C681D !important;
 	min-height: 35px;
 	padding: 0 0 0 0;
 }
@@ -14,6 +14,7 @@ nav a {
 	text-transform: uppercase;
 	font-size: 13px;
 	font-weight: 700;
+	letter-spacing: .05em;
 	color: darkblue;
 	text-decoration: none;
 	padding: 0 15px 0 15px;
@@ -34,7 +35,11 @@ form {
 }
 
 button {
-	background-color: darkblue;
+	background-color: #4C681D !important;
+}
+
+hr {
+	border-color: #4C681D;
 }
 
 .bold {
@@ -48,4 +53,42 @@ button {
 	border: 1px solid black;
 	border-radius: 3px;
 }
+
+/* label underline focus color */
+.input-field input:focus {
+     border-bottom: 1px solid #4C681D !important;
+     box-shadow: 0 1px 0 0 #4C681D !important;
+   }
+
+.input-text input:focus {
+     border-bottom: 1px solid #4C681D !important;
+     box-shadow: 0 1px 0 0 #4C681D !important;
+   }
+
+
+/* Materialize overrides:
+
+.input-field label {
+	color: #000;
+}
+.input-field input[type=text]:focus + label {
+	color: #000;
+}
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+.input-field input[type=text].valid {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+.input-field input[type=text].invalid {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+.input-field .prefix.active {
+	color: #000;
+}
+
+*/
 

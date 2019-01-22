@@ -125,7 +125,7 @@ router.post('/charity-detail', function(req, res){
       }
     })
     .spread(function(ask, wasCreated){
-      res.redirect('/events/eventsetup');
+      res.redirect('/events/event');
     })
     .catch(function(err){
       console.log('error', err);

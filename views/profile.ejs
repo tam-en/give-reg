@@ -1,51 +1,54 @@
 <br><h4>Hello, <%= user.firstname %>!</h4>
 
-	<div class="row">
-		<h5>profile info:</h5>
+<div class="row">
+	<div class="col s8">
 		<ul>
 			<li><p><span class="bold">full name:  </span><%= user.firstname %> <%= user.lastname %></p></li>
 			<li><p><span class="bold">email:  </span><%= user.email %> </p></li>
 			<li><p><span class="bold">bio:  </span><%= user.bio %> </p></li>
-		</ul>		
-	</div>
-	<div class="col s9">	
+		</ul>	
+	</div>	
+	<div class="col s4">	
+		<br>
+		<form method="GET" action="/profile/profile-edit/<%=user.id%>">
+			<div class="row">
+				<div class="col s6">
+					<input type="hidden" name="id" value="<%=user.id %>">
+					<button class="waves-effect waves-light btn" type="submit">edit&nbsp;profile</button>
+				</div>
+			</div>
+		</form>
+	</div> 
 </div>
 
-<form method="GET" action="/profile/profile-edit/<%=user.id%>">
-	<div class="row">
-		<div class="col s6">
-			<input type="hidden" name="id" value="<%=user.id %>">
-			<button class="waves-effect waves-light btn" type="submit">edit profile</button>
+<div class="row">
+	<hr>
+	<h5>Events you've already set up:</h5>
+	<% foundEvents.forEach(function(event){ %>
+		<div class="row">
+			<div class="col s8">
+				<p><span  class="bold"><%= event.dataValues.name %></span>
+					<% if(event.dataValues.date){ %>
+						<% var d = event.dataValues.date %>
+						<% d = d.toDateString(); %>
+						  (<%= d %>)
+				<% } %> 
+				</p>
+				<p><%= event.dataValues.desc %> </p>
+			</div>
+			<div class="col s4">
+				<br>
+				<form method="GET" action="/events/event/<%=event.dataValues.id%>">
+					<input type="hidden" name="username" value="<%= user.firstname %> <%= user.lastname %>">
+					<button type="submit" class="waves-effect waves-light btn">go to event page</button>
+				</form>
+			</div>
 		</div>
-	</div>
-</form>
+	<% }) %>
+</div> <!-- end row -->
 
-
-
-<h5>events you have already set up</h5>
-
-<% foundEvents.forEach(function(event){ %>
-	<div class="row">
-		<div class="col s6">
-			<p><%= event.dataValues.name %> </p>
-			<p>(<%= event.dataValues.desc %>) </p>
-			<p>event.dataValues.id = <%= event.dataValues.id %>, <%= typeof event.dataValues.id%> </p>
-			<% if(event.dataValues.date){ %>
-				<p> <%= event.dataValues.date %> </p>
-			<% } %> 
-		</div>
-		<div class="col s6">
-			<form method="GET" action="/events/event/<%=event.dataValues.id%>">
-				<input type="hidden" name="username" value="<%= user.firstname %> <%= user.lastname %>">
-				<button type="submit" class="waves-effect waves-light btn">go to event page</button>
-			</form>
-		</div>
-	</div>
-<% }) %>
-
-<br>
-<h5>start a new event</h5>
-
+<hr>
+<h5>Start a new event</h5>
 <form method="POST" action="/events/event/:id">
 	<div class="row">
 		<div class="col s6 input-field">

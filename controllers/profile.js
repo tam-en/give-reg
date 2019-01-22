@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var methodOverride = require('method-override');
 var db = require('../models');
 var methodOverride = require('method-override');
 var passport = require('../config/passportConfig');
@@ -8,7 +7,6 @@ var passport = require('../config/passportConfig');
 // reference to middleware
 var loggedIn = require('../middleware/loggedIn');
 var isAdmin = require('../middleware/isAdmin');
-var db = require('../models'); 
 
 router.get('/', loggedIn, function(req, res){
 	//console.log("YAYYYYY!!!!! got to profile.js router.get for /");

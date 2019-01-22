@@ -1,1 +1,25 @@
 <h4>this is a test</h4>
+
+<div class="row">
+	<form method="PUT" action="/events/ask">
+		<div class="row">
+			<div class="col s4 input-field">
+				<label>ask name</label>
+				<input type="text" name="name" placeholder="name">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12 input-text">
+				<label>description</label>
+				<input type="text" name="desc" placeholder="description">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s3 input-field">
+				<input type="hidden" name="eventID" value="<%= event.id %>">
+				<button class="waves-effect waves-light btn" type="submit" name="action">add this "ask"<i class="material-icons right">add</i>
+				</button>
+			</div>
+		</div>
+	</form>
+</div>
